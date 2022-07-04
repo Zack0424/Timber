@@ -24,20 +24,23 @@ MDScreen:
 
         Label:
             id: label_widget
-            text: "Swipe somewhere"
+            text: "You're swiping from:\n"
         Label:
             id: data
             text: "Data"
         BoxLayout:
             orientation: "horizontal"
             Button:
-                id: automatic_adress
+                id: automatic_address
                 text:"Automatic location\nMay not be correct"
                 on_press: app.find_location_auto()
             Label:
-                id: adress_label
-                text: "Write your adress here,\n or click the button"
+                id: address_label
+                text: "Write your address here,\n or click the button"
             TextInput:
                 id: address_input
                 hint_text: "Taj Mahal, Agra, Uttar Pradesh 282001"
                 multiline: False
+            Button:
+                text:"set address"
+                on_press: app.find_location()

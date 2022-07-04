@@ -22,13 +22,11 @@ class MainApp(MDApp):
 		return Builder.load_file('swiper2.kv')
 	# Swipe Left
 	def on_swipe_left(self):
-		self.root.ids.label_widget.text = "You Swiped yes!"
 		# put the data in the right database
 		self.go_next()
 
 	# Swipe Right
 	def on_swipe_right(self):
-		self.root.ids.label_widget.text = "You Swiped No!"
 		#put the data in the right database
 		self.go_next()
 
@@ -42,12 +40,19 @@ class MainApp(MDApp):
 		my_ip = geocoder.ip('me')
 		my_adress = my_ip.latlng
 		location = geolcator.reverse(Point(my_adress[0],my_adress[1]))
-		self.find_location()
 
 	def find_location(self):
-		loc ="Rév utca 13/b, Tiszatardos, Magyarország, 3928"
+		loc =self.root.ids.address_input.text
 		geolocator = Nominatim(user_agent="test")
 		location = geolocator.geocode(loc)
-		print(location.address)
-		print(self.root.ids.address_input.text)
+		geocode = (location.latitude,location.longitude)
+
+	def display_location(self,address, location = ""):
+		self.root.ids.label_widget.text = f"you're swiping from:\n{address[0]},{address[1]}, {address[7]},{address[6]}"
+
+		# fmap = folium.Map(location=location,zoom_start=12)
+		# folium.CircleMarker(location=location,radius=50).add_to(fmap)
+		# fmap.save("mymap.html")
+
+
 MainApp().run()
