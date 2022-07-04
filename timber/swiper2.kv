@@ -1,7 +1,6 @@
 <MySwiper@MDSwiperItem>
 
 MDScreen:
-
     MDToolbar:
         id: toolbar
         title: "Swipe App"
@@ -21,26 +20,49 @@ MDScreen:
 
     BoxLayout:
         orientation: "vertical"
+        BoxLayout:
+            Label:
+                id: label_widget
+                text: "You're swiping from:\n"
+            TextInput:
+                id: radius
+                pos_hint: {"x":0, "top": 1}
+                size_hint: (.2, None)
+                input_filter: "int"
+                hint_text: "Radius of matches"
+                multiline: False
+                height: 30
 
-        Label:
-            id: label_widget
-            text: "You're swiping from:\n"
         Label:
             id: data
             text: "Data"
         BoxLayout:
             orientation: "horizontal"
+
             Button:
                 id: automatic_address
                 text:"Automatic location\nMay not be correct"
-                on_press: app.find_location_auto()
+                size_hint: (.2, None)
+                height :40
+                on_press: app.user_location_auto()
+
             Label:
                 id: address_label
+                size_hint: (.2, None)
+                height :40
                 text: "Write your address here,\n or click the button"
+
             TextInput:
                 id: address_input
+                font_size: 10
+
+                size_hint: (.2, None)
+                height: 40
                 hint_text: "Taj Mahal, Agra, Uttar Pradesh 282001"
                 multiline: False
+
             Button:
                 text:"set address"
-                on_press: app.find_location()
+                size_hint: (.2, None)
+                height :40
+                on_press: app.user_location()
