@@ -1,0 +1,43 @@
+<MySwiper@MDSwiperItem>
+
+MDScreen:
+
+    MDToolbar:
+        id: toolbar
+        title: "Swipe App"
+        elevation: 10
+        pos_hint: {"top": 1}
+
+    MDSwiper:
+        id: swiper
+        size_hint_y: None
+        height: root.height - toolbar.height - dp(40)
+        y: root.height - self.height - toolbar.height - dp(20)
+
+        on_overswipe_right: app.on_swipe_right()
+        on_overswipe_left: app.on_swipe_left()
+        on_swipe_left: app.on_swipe_left()
+        on_swipe_right: app.on_swipe_right()
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            id: label_widget
+            text: "Swipe somewhere"
+        Label:
+            id: data
+            text: "Data"
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                id: automatic_adress
+                text:"Automatic location\nMay not be correct"
+                on_press: app.find_location_auto()
+            Label:
+                id: adress_label
+                text: "Write your adress here,\n or click the button"
+            TextInput:
+                id: address_input
+                hint_text: "Taj Mahal, Agra, Uttar Pradesh 282001"
+                multiline: False
