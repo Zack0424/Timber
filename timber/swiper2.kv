@@ -33,9 +33,19 @@ MDScreen:
                 multiline: False
                 height: 30
 
+            Button:
+                id: set_radius
+                pos_hint: {"x":0, "top": 1}
+                size_hint: (.2, None)
+                height: 30
+                text: "Set radius"
+                on_press: app.filter_database()
+
+
+
         Label:
             id: data
-            text: "Data"
+            text: "Set your address before swiping"
         BoxLayout:
             orientation: "horizontal"
 
@@ -55,7 +65,6 @@ MDScreen:
             TextInput:
                 id: address_input
                 font_size: 10
-
                 size_hint: (.2, None)
                 height: 40
                 hint_text: "Taj Mahal, Agra, Uttar Pradesh 282001"
@@ -66,3 +75,9 @@ MDScreen:
                 size_hint: (.2, None)
                 height :40
                 on_press: app.user_location()
+            Button:
+                id: set_radius
+                size_hint: (.2, None)
+                height: 40
+                text: "Create account"
+                on_press: app.create_account()
